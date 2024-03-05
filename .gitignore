@@ -27,3 +27,9 @@ outputs/*
 # vim
 *.swp
 MUJOCO_LOG.TXT
+
+gello/lib64
+gello/pyvenv.cfg
+gello/bin
+third_party/DynamixelSDK
+arena.xml

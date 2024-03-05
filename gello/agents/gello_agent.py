@@ -44,20 +44,33 @@ class DynamixelRobotConfig:
 
 
 PORT_CONFIG_MAP: Dict[str, DynamixelRobotConfig] = {
-    # xArm
-    # "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT3M9NVB-if00-port0": DynamixelRobotConfig(
-    #     joint_ids=(1, 2, 3, 4, 5, 6, 7),
+    # xArm6
+    "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT8ISVLF-if00-port0": DynamixelRobotConfig(
+        joint_ids=(1, 2, 3, 4, 5, 6),
+        joint_offsets=(
+            2 * np.pi / 2,
+            2 * np.pi / 2,
+            2 * np.pi / 2,
+            2 * np.pi / 2,
+            2 * np.pi / 2,
+            2 * np.pi / 2,
+        ),
+        joint_signs=(1, 1, 1, 1, 1, 1),
+        gripper_config=None,
+    ),
+    # ur
+    # "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT8ISVLF-if00-port0": DynamixelRobotConfig(
+    #     joint_ids=(1, 2, 3, 4, 5, 6),
     #     joint_offsets=(
     #         2 * np.pi / 2,
+    #         3 * np.pi / 2,
+    #         4 * np.pi / 2,
+    #         5 * np.pi / 2,
     #         2 * np.pi / 2,
-    #         2 * np.pi / 2,
-    #         2 * np.pi / 2,
-    #         -1 * np.pi / 2 + 2 * np.pi,
-    #         1 * np.pi / 2,
-    #         1 * np.pi / 2,
+    #         0 * np.pi / 2,
     #     ),
-    #     joint_signs=(1, 1, 1, 1, 1, 1, 1),
-    #     gripper_config=(8, 279, 279 - 50),
+    #     joint_signs=(1, 1, -1, 1, 1, 1),
+    #     gripper_config=(7, 20, -22),
     # ),
     # panda
     # "/dev/cu.usbserial-FT3M9NVB": DynamixelRobotConfig(
