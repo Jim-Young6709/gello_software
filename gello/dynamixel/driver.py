@@ -135,7 +135,14 @@ class DynamixelDriver(DynamixelDriverProtocol):
                 raise RuntimeError(
                     f"Failed to add parameter for Dynamixel with ID {dxl_id}"
                 )
-
+        #We add this to get rid of the wraparound issue.
+        for dxl_id in self._ids:
+            dxl_comm_result, dxl_error = self._packetHandler.reboot(self._portHandler, dxl_id)
+            if dxl_comm_result != COMM_SUCCESS:
+                print("%s" % self._packetHandler.getTxRxResult(dxl_comm_result))
+            elif dxl_error != 0:
+                print("%s" % self._packetHandler.getRxPacketError(dxl_error))
+        time.sleep(0.5)
         # Disable torque for each Dynamixel servo
         self._torque_enabled = False
         try:
